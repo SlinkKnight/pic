@@ -1,0 +1,91 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+008     lcd
+008     lcdlat
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     @TRIS_C
+021     lcd_init.i
+021     MAIN.@SCRATCH1
+022-025 lcd_init.LCD_INIT_STRING
+026     @delay_ms1.P1
+026     lcd_init.@SCRATCH1
+027     lcd_send_byte.address
+028     lcd_send_byte.n
+029     lcd_read_byte.low
+029     lcd_send_byte.@SCRATCH1
+02A     lcd_read_byte.high
+02A     lcd_send_nibble.n
+02B     lcd_read_byte.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+088     lcdtris
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @delay_ms1
+000019  lcd_send_nibble
+000025  lcd_read_nibble
+00002B  lcd_init
+000063  lcd_send_byte
+000069  lcd_read_byte
+0000A7  clearDisplay
+0000D2  display0
+0000F9  display1
+000108  display2
+000129  display3
+00014A  display4
+000165  display5
+000186  display6
+0001AD  display7
+0001C2  display8
+0001EF  display9
+000216  MAIN
+000216  @cinit1
+000222  @cinit2
+
+Project Directory:
+    C:\Users\Vicenzo\Desktop\Escola\info Industrial\pic\24-03\
+
+Project Files:
+    main.c                                                  [31-Mar-26 16:47  CRC=A5734997]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\devices\16F877A.h [08-Sep-15 15:15  CRC=B168AC0E]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\drivers\lcd.c [19-Sep-13 16:38  CRC=D1A6378A]
+
+Source signature=FA2864B9
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=90C1
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/eCOD:  main.cod
+    Project:     main.ccspjt
