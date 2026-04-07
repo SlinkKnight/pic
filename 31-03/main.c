@@ -21,7 +21,8 @@
 #define LEDF2    PIN_D5
 #define LEDG2    PIN_D6
 
-void clearDisplay(int flag){
+void clearDisplay(int flag)
+{
 
     if(flag) {
         output_high(LEDA);
@@ -42,7 +43,8 @@ void clearDisplay(int flag){
     }
 }
 
-void choose(int un, int dec) {
+void choose(int un, int dec) 
+{
     switch (un)
     {
     case 0:
