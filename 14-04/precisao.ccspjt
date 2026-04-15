@@ -1,0 +1,14 @@
+[PROJECT]
+Target=precisao.hex
+Processor_Text=PIC16F877A
+CCSVersion=5.049
+Compiler=PCM
+[Target Data]
+FileList=precisao.c
+[precisao.c]
+Type=4
+[mru-list]
+1=precisao.c
+[Units]
+Count=1
+1=precisao (main)

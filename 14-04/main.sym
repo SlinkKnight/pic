@@ -11,21 +11,22 @@
 021     MAIN.hours
 022     MAIN.minutes
 023     MAIN.seconds
-024     MAIN.counter
-025     displayRefresh.h
-026     displayRefresh.m
-027     displayRefresh.s
-028     displayRefresh.horaDez
-029     displayRefresh.horaUnd
-02A     displayRefresh.minDez
-02B     displayRefresh.minUnd
-02C     displayRefresh.segDez
-02D     displayRefresh.segUnd
-02E     @DIV88.P1
-02E     @delay_ms1.P2
-02E     choose.num
+024-025 MAIN.acc
+026     displayRefresh.h
+026     testes.@SCRATCH1
+027     displayRefresh.m
+028     displayRefresh.s
+029     displayRefresh.horaDez
+02A     displayRefresh.horaUnd
+02B     displayRefresh.minDez
+02C     displayRefresh.minUnd
+02D     displayRefresh.segDez
+02E     displayRefresh.segUnd
 02F     @DIV88.P1
-030     @DIV88.@SCRATCH1
+02F     choose.num
+02F     @delay_ms1.P1
+030     @DIV88.P1
+031     @DIV88.@SCRATCH1
 077     @SCRATCH
 078     @SCRATCH
 078     _RETURN_
@@ -33,40 +34,41 @@
 07A     @SCRATCH
 09C.6   C1OUT
 09C.7   C2OUT
-10D-10E @READ_PROGRAM_MEMORY8.P1
-10D-10E @WRITE_PROGRAM_MEMORY8.P2
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
 
 ROM Allocation:
-000004  @DIV88
-000019  choose
-000039  display0
-000052  display1
-00005B  display2
-000070  display3
-000085  display4
-000096  display5
-0000AB  display6
-0000C4  display7
-0000D1  display8
-0000EE  display9
-000108  @delay_ms1
-00011D  clearDisplay
-00013A  displayRefresh
-0001F1  MAIN
-0001F1  @cinit1
-0001FD  @cinit2
+000004  clearDisplay
+000021  @delay_ms1
+000036  testes
+000065  @DIV88
+00007A  choose
+00009A  display0
+0000B3  display1
+0000BC  display2
+0000D1  display3
+0000E6  display4
+0000F7  display5
+00010C  display6
+000125  display7
+000132  display8
+00014F  display9
+000169  displayRefresh
+00021A  MAIN
+00021A  @cinit1
+000226  @cinit2
 
 Project Directory:
     C:\Users\Vicenzo\Desktop\Escola\info Industrial\pic\14-04\
 
 Project Files:
-    main.c                                                  [15-Apr-26 12:07  CRC=33AAB2B9]
+    main.c                                                  [15-Apr-26 15:21  CRC=BCAC041C]
     ..\..\..\..\..\..\..\Program Files (x86)\PICC\devices\16F877A.h [08-Sep-15 15:15  CRC=B168AC0E]
 
-Source signature=967C0AD5
+Source signature=1F7D5C38
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=DD41
+Hex file CRC=36D8
 
 Units:
     main (main)

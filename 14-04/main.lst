@@ -1,18 +1,18 @@
-CCS PCM C Compiler, Version 5.049, 5967               15-Apr-26 12:07
+CCS PCM C Compiler, Version 5.049, 5967               15-Apr-26 15:21
 
                Filename:   C:\Users\Vicenzo\Desktop\Escola\info Industrial\pic\14-04\main.lst
 
-               ROM used:   547 words (7%)
+               ROM used:   573 words (7%)
                            Largest free fragment is 2048
-               RAM used:   10 (3%) at main() level
-                           22 (6%) worst case
-               Stack used: 1 locations
+               RAM used:   11 (3%) at main() level
+                           23 (6%) worst case
+               Stack used: 2 locations
                Stack size: 8
 
 *
-0000:  MOVLW  01
+0000:  MOVLW  02
 0001:  MOVWF  0A
-0002:  GOTO   1F1
+0002:  GOTO   21A
 0003:  NOP
 .................... #include <16F877A.h> 
 .................... //////////// Standard Header file for the PIC16F877A device //////////////// 
@@ -26,57 +26,56 @@ CCS PCM C Compiler, Version 5.049, 5967               15-Apr-26 12:07
 .................... //// form are not restricted in any way.                               //// 
 .................... /////////////////////////////////////////////////////////////////////////// 
 .................... #device PIC16F877A 
-0004:  MOVF   2F,W
-0005:  CLRF   78
-0006:  SUBWF  2E,W
-0007:  BTFSC  03.0
-0008:  GOTO   00C
-0009:  MOVF   2E,W
-000A:  MOVWF  77
-000B:  GOTO   018
-000C:  CLRF   77
-000D:  MOVLW  08
-000E:  MOVWF  30
-000F:  RLF    2E,F
-0010:  RLF    77,F
-0011:  MOVF   2F,W
-0012:  SUBWF  77,W
-0013:  BTFSC  03.0
-0014:  MOVWF  77
-0015:  RLF    78,F
-0016:  DECFSZ 30,F
-0017:  GOTO   00F
-0018:  RETURN
+*
+0065:  MOVF   30,W
+0066:  CLRF   78
+0067:  SUBWF  2F,W
+0068:  BTFSC  03.0
+0069:  GOTO   06D
+006A:  MOVF   2F,W
+006B:  MOVWF  77
+006C:  GOTO   079
+006D:  CLRF   77
+006E:  MOVLW  08
+006F:  MOVWF  31
+0070:  RLF    2F,F
+0071:  RLF    77,F
+0072:  MOVF   30,W
+0073:  SUBWF  77,W
+0074:  BTFSC  03.0
+0075:  MOVWF  77
+0076:  RLF    78,F
+0077:  DECFSZ 31,F
+0078:  GOTO   070
+0079:  RETURN
 ....................  
 .................... #list 
-....................  
 ....................  
 .................... #device adc=10 
 .................... #use delay(crystal=4MHz) 
 *
-0108:  MOVLW  2E
-0109:  MOVWF  04
-010A:  BCF    03.7
-010B:  MOVF   00,W
-010C:  BTFSC  03.2
-010D:  GOTO   11C
-010E:  MOVLW  01
-010F:  MOVWF  78
-0110:  CLRF   77
-0111:  DECFSZ 77,F
-0112:  GOTO   111
-0113:  DECFSZ 78,F
-0114:  GOTO   110
-0115:  MOVLW  4A
-0116:  MOVWF  77
-0117:  DECFSZ 77,F
-0118:  GOTO   117
-0119:  GOTO   11A
-011A:  DECFSZ 00,F
-011B:  GOTO   10E
-011C:  RETURN
-....................  
-.................... #FUSES NOPUT, NOBROWNOUT, NOLVP, HS, NOWDT  
+0021:  MOVLW  2F
+0022:  MOVWF  04
+0023:  BCF    03.7
+0024:  MOVF   00,W
+0025:  BTFSC  03.2
+0026:  GOTO   035
+0027:  MOVLW  01
+0028:  MOVWF  78
+0029:  CLRF   77
+002A:  DECFSZ 77,F
+002B:  GOTO   02A
+002C:  DECFSZ 78,F
+002D:  GOTO   029
+002E:  MOVLW  4A
+002F:  MOVWF  77
+0030:  DECFSZ 77,F
+0031:  GOTO   030
+0032:  GOTO   033
+0033:  DECFSZ 00,F
+0034:  GOTO   027
+0035:  RETURN
+.................... #FUSES NOPUT, NOBROWNOUT, NOLVP, HS, NOWDT 
 ....................  
 .................... #define LEDA    PIN_B1 
 .................... #define LEDB    PIN_B0 
@@ -94,710 +93,743 @@ CCS PCM C Compiler, Version 5.049, 5967               15-Apr-26 12:07
 .................... #define ACT5    PIN_D2 
 .................... #define ACT6    PIN_D3 
 ....................  
-.................... void clearDisplay(){ 
-....................     output_high(LEDA); 
-011D:  BSF    03.5
-011E:  BCF    06.1
-011F:  BCF    03.5
-0120:  BSF    06.1
-....................     output_high(LEDB); 
-0121:  BSF    03.5
-0122:  BCF    06.0
-0123:  BCF    03.5
-0124:  BSF    06.0
+.................... void clearDisplay() { 
+....................     output_high(LEDA);  
+*
+0004:  BSF    03.5
+0005:  BCF    06.1
+0006:  BCF    03.5
+0007:  BSF    06.1
+....................     output_high(LEDB);  
+0008:  BSF    03.5
+0009:  BCF    06.0
+000A:  BCF    03.5
+000B:  BSF    06.0
 ....................     output_high(LEDC); 
-0125:  BSF    03.5
-0126:  BCF    06.6
-0127:  BCF    03.5
-0128:  BSF    06.6
-....................     output_high(LEDD); 
-0129:  BSF    03.5
-012A:  BCF    06.5
-012B:  BCF    03.5
-012C:  BSF    06.5
-....................     output_high(LEDE); 
-012D:  BSF    03.5
-012E:  BCF    06.4
-012F:  BCF    03.5
-0130:  BSF    06.4
+000C:  BSF    03.5
+000D:  BCF    06.6
+000E:  BCF    03.5
+000F:  BSF    06.6
+....................     output_high(LEDD);  
+0010:  BSF    03.5
+0011:  BCF    06.5
+0012:  BCF    03.5
+0013:  BSF    06.5
+....................     output_high(LEDE);  
+0014:  BSF    03.5
+0015:  BCF    06.4
+0016:  BCF    03.5
+0017:  BSF    06.4
 ....................     output_high(LEDF); 
-0131:  BSF    03.5
-0132:  BCF    06.3
-0133:  BCF    03.5
-0134:  BSF    06.3
+0018:  BSF    03.5
+0019:  BCF    06.3
+001A:  BCF    03.5
+001B:  BSF    06.3
 ....................     output_high(LEDG); 
-0135:  BSF    03.5
-0136:  BCF    06.2
-0137:  BCF    03.5
-0138:  BSF    06.2
-0139:  RETURN
+001C:  BSF    03.5
+001D:  BCF    06.2
+001E:  BCF    03.5
+001F:  BSF    06.2
+0020:  RETURN
 .................... } 
 ....................  
-.................... void display1() { 
-....................     output_low(LEDB); 
+.................... void display1() {  
+....................     output_low(LEDB);  
 *
-0052:  BSF    03.5
-0053:  BCF    06.0
-0054:  BCF    03.5
-0055:  BCF    06.0
-....................     output_low(LEDC); 
-0056:  BSF    03.5
-0057:  BCF    06.6
-0058:  BCF    03.5
-0059:  BCF    06.6
-.................... } 
-.................... void display2() { 
-....................     output_low(LEDD); 
-*
-005B:  BSF    03.5
-005C:  BCF    06.5
-005D:  BCF    03.5
-005E:  BCF    06.5
-....................     output_low(LEDE); 
-005F:  BSF    03.5
-0060:  BCF    06.4
-0061:  BCF    03.5
-0062:  BCF    06.4
-....................     output_low(LEDG); 
-0063:  BSF    03.5
-0064:  BCF    06.2
-0065:  BCF    03.5
-0066:  BCF    06.2
-....................     output_low(LEDB); 
-0067:  BSF    03.5
-0068:  BCF    06.0
-0069:  BCF    03.5
-006A:  BCF    06.0
-....................     output_low(LEDA); 
-006B:  BSF    03.5
-006C:  BCF    06.1
-006D:  BCF    03.5
-006E:  BCF    06.1
-.................... } 
-.................... void display3() { 
-....................     output_low(LEDA); 
-*
-0070:  BSF    03.5
-0071:  BCF    06.1
-0072:  BCF    03.5
-0073:  BCF    06.1
-....................     output_low(LEDB); 
-0074:  BSF    03.5
-0075:  BCF    06.0
-0076:  BCF    03.5
-0077:  BCF    06.0
-....................     output_low(LEDG); 
-0078:  BSF    03.5
-0079:  BCF    06.2
-007A:  BCF    03.5
-007B:  BCF    06.2
-....................     output_low(LEDC); 
-007C:  BSF    03.5
-007D:  BCF    06.6
-007E:  BCF    03.5
-007F:  BCF    06.6
-....................     output_low(LEDD); 
-0080:  BSF    03.5
-0081:  BCF    06.5
-0082:  BCF    03.5
-0083:  BCF    06.5
-.................... } 
-.................... void display4() { 
-....................     output_low(LEDC); 
-*
-0085:  BSF    03.5
-0086:  BCF    06.6
-0087:  BCF    03.5
-0088:  BCF    06.6
-....................     output_low(LEDG); 
-0089:  BSF    03.5
-008A:  BCF    06.2
-008B:  BCF    03.5
-008C:  BCF    06.2
-....................     output_low(LEDF); 
-008D:  BSF    03.5
-008E:  BCF    06.3
-008F:  BCF    03.5
-0090:  BCF    06.3
-....................     output_low(LEDB); 
-0091:  BSF    03.5
-0092:  BCF    06.0
-0093:  BCF    03.5
-0094:  BCF    06.0
-.................... } 
-.................... void display5() { 
-....................     output_low(LEDA); 
-*
-0096:  BSF    03.5
-0097:  BCF    06.1
-0098:  BCF    03.5
-0099:  BCF    06.1
-....................     output_low(LEDF); 
-009A:  BSF    03.5
-009B:  BCF    06.3
-009C:  BCF    03.5
-009D:  BCF    06.3
-....................     output_low(LEDG); 
-009E:  BSF    03.5
-009F:  BCF    06.2
-00A0:  BCF    03.5
-00A1:  BCF    06.2
-....................     output_low(LEDC); 
-00A2:  BSF    03.5
-00A3:  BCF    06.6
-00A4:  BCF    03.5
-00A5:  BCF    06.6
-....................     output_low(LEDD); 
-00A6:  BSF    03.5
-00A7:  BCF    06.5
-00A8:  BCF    03.5
-00A9:  BCF    06.5
-.................... } 
-.................... void display6() { 
-....................     output_low(LEDA); 
-*
-00AB:  BSF    03.5
-00AC:  BCF    06.1
-00AD:  BCF    03.5
-00AE:  BCF    06.1
-....................     output_low(LEDF); 
-00AF:  BSF    03.5
-00B0:  BCF    06.3
-00B1:  BCF    03.5
-00B2:  BCF    06.3
-....................     output_low(LEDG); 
 00B3:  BSF    03.5
-00B4:  BCF    06.2
+00B4:  BCF    06.0
 00B5:  BCF    03.5
-00B6:  BCF    06.2
-....................     output_low(LEDC); 
+00B6:  BCF    06.0
+....................     output_low(LEDC);  
 00B7:  BSF    03.5
 00B8:  BCF    06.6
 00B9:  BCF    03.5
 00BA:  BCF    06.6
-....................     output_low(LEDD); 
-00BB:  BSF    03.5
-00BC:  BCF    06.5
-00BD:  BCF    03.5
-00BE:  BCF    06.5
-....................     output_low(LEDE); 
-00BF:  BSF    03.5
-00C0:  BCF    06.4
-00C1:  BCF    03.5
-00C2:  BCF    06.4
-....................  
 .................... } 
-.................... void display7() { 
-....................     output_low(LEDA); 
+.................... void display2() {  
+....................     output_low(LEDD);  
 *
+00BC:  BSF    03.5
+00BD:  BCF    06.5
+00BE:  BCF    03.5
+00BF:  BCF    06.5
+....................     output_low(LEDE);  
+00C0:  BSF    03.5
+00C1:  BCF    06.4
+00C2:  BCF    03.5
+00C3:  BCF    06.4
+....................     output_low(LEDG);  
 00C4:  BSF    03.5
-00C5:  BCF    06.1
+00C5:  BCF    06.2
 00C6:  BCF    03.5
-00C7:  BCF    06.1
-....................     output_low(LEDB); 
+00C7:  BCF    06.2
+....................     output_low(LEDB);  
 00C8:  BSF    03.5
 00C9:  BCF    06.0
 00CA:  BCF    03.5
 00CB:  BCF    06.0
-....................     output_low(LEDC); 
+....................     output_low(LEDA);  
 00CC:  BSF    03.5
-00CD:  BCF    06.6
+00CD:  BCF    06.1
 00CE:  BCF    03.5
-00CF:  BCF    06.6
+00CF:  BCF    06.1
 .................... } 
-.................... void display8() { 
-....................     output_low(LEDA); 
+.................... void display3() {  
+....................     output_low(LEDA);  
 *
 00D1:  BSF    03.5
 00D2:  BCF    06.1
 00D3:  BCF    03.5
 00D4:  BCF    06.1
-....................     output_low(LEDF); 
+....................     output_low(LEDB);  
 00D5:  BSF    03.5
-00D6:  BCF    06.3
+00D6:  BCF    06.0
 00D7:  BCF    03.5
-00D8:  BCF    06.3
-....................     output_low(LEDG); 
+00D8:  BCF    06.0
+....................     output_low(LEDG);  
 00D9:  BSF    03.5
 00DA:  BCF    06.2
 00DB:  BCF    03.5
 00DC:  BCF    06.2
-....................     output_low(LEDC); 
+....................     output_low(LEDC);  
 00DD:  BSF    03.5
 00DE:  BCF    06.6
 00DF:  BCF    03.5
 00E0:  BCF    06.6
-....................     output_low(LEDD); 
+....................     output_low(LEDD);  
 00E1:  BSF    03.5
 00E2:  BCF    06.5
 00E3:  BCF    03.5
 00E4:  BCF    06.5
-....................     output_low(LEDE); 
-00E5:  BSF    03.5
-00E6:  BCF    06.4
-00E7:  BCF    03.5
-00E8:  BCF    06.4
-....................     output_low(LEDB); 
-00E9:  BSF    03.5
-00EA:  BCF    06.0
-00EB:  BCF    03.5
-00EC:  BCF    06.0
 .................... } 
-.................... void display9() { 
-....................     output_low(LEDA); 
+.................... void display4() {  
+....................     output_low(LEDC);  
 *
+00E6:  BSF    03.5
+00E7:  BCF    06.6
+00E8:  BCF    03.5
+00E9:  BCF    06.6
+....................     output_low(LEDG);  
+00EA:  BSF    03.5
+00EB:  BCF    06.2
+00EC:  BCF    03.5
+00ED:  BCF    06.2
+....................     output_low(LEDF);  
 00EE:  BSF    03.5
-00EF:  BCF    06.1
+00EF:  BCF    06.3
 00F0:  BCF    03.5
-00F1:  BCF    06.1
-....................     output_low(LEDF); 
+00F1:  BCF    06.3
+....................     output_low(LEDB);  
 00F2:  BSF    03.5
-00F3:  BCF    06.3
+00F3:  BCF    06.0
 00F4:  BCF    03.5
-00F5:  BCF    06.3
-....................     output_low(LEDG); 
-00F6:  BSF    03.5
-00F7:  BCF    06.2
-00F8:  BCF    03.5
-00F9:  BCF    06.2
-....................     output_low(LEDC); 
-00FA:  BSF    03.5
-00FB:  BCF    06.6
-00FC:  BCF    03.5
-00FD:  BCF    06.6
-....................     output_low(LEDD); 
-00FE:  BSF    03.5
-00FF:  BCF    06.5
-0100:  BCF    03.5
-0101:  BCF    06.5
-....................     output_low(LEDB); 
-0102:  BSF    03.5
-0103:  BCF    06.0
-0104:  BCF    03.5
-0105:  BCF    06.0
+00F5:  BCF    06.0
 .................... } 
-.................... void display0() { 
-....................     output_low(LEDF); 
+.................... void display5() {  
+....................     output_low(LEDA);  
 *
-0039:  BSF    03.5
-003A:  BCF    06.3
-003B:  BCF    03.5
-003C:  BCF    06.3
-....................     output_low(LEDE); 
-003D:  BSF    03.5
-003E:  BCF    06.4
-003F:  BCF    03.5
-0040:  BCF    06.4
-....................     output_low(LEDD); 
-0041:  BSF    03.5
-0042:  BCF    06.5
-0043:  BCF    03.5
-0044:  BCF    06.5
-....................     output_low(LEDC); 
-0045:  BSF    03.5
-0046:  BCF    06.6
-0047:  BCF    03.5
-0048:  BCF    06.6
-....................     output_low(LEDB); 
-0049:  BSF    03.5
-004A:  BCF    06.0
-004B:  BCF    03.5
-004C:  BCF    06.0
-....................     output_low(LEDA); 
-004D:  BSF    03.5
-004E:  BCF    06.1
-004F:  BCF    03.5
-0050:  BCF    06.1
+00F7:  BSF    03.5
+00F8:  BCF    06.1
+00F9:  BCF    03.5
+00FA:  BCF    06.1
+....................     output_low(LEDF);  
+00FB:  BSF    03.5
+00FC:  BCF    06.3
+00FD:  BCF    03.5
+00FE:  BCF    06.3
+....................     output_low(LEDG);  
+00FF:  BSF    03.5
+0100:  BCF    06.2
+0101:  BCF    03.5
+0102:  BCF    06.2
+....................     output_low(LEDC);  
+0103:  BSF    03.5
+0104:  BCF    06.6
+0105:  BCF    03.5
+0106:  BCF    06.6
+....................     output_low(LEDD);  
+0107:  BSF    03.5
+0108:  BCF    06.5
+0109:  BCF    03.5
+010A:  BCF    06.5
+.................... } 
+.................... void display6() {  
+....................     output_low(LEDA);  
+*
+010C:  BSF    03.5
+010D:  BCF    06.1
+010E:  BCF    03.5
+010F:  BCF    06.1
+....................     output_low(LEDF);  
+0110:  BSF    03.5
+0111:  BCF    06.3
+0112:  BCF    03.5
+0113:  BCF    06.3
+....................     output_low(LEDG);  
+0114:  BSF    03.5
+0115:  BCF    06.2
+0116:  BCF    03.5
+0117:  BCF    06.2
+....................     output_low(LEDC);  
+0118:  BSF    03.5
+0119:  BCF    06.6
+011A:  BCF    03.5
+011B:  BCF    06.6
+....................     output_low(LEDD);  
+011C:  BSF    03.5
+011D:  BCF    06.5
+011E:  BCF    03.5
+011F:  BCF    06.5
+....................     output_low(LEDE);  
+0120:  BSF    03.5
+0121:  BCF    06.4
+0122:  BCF    03.5
+0123:  BCF    06.4
+.................... } 
+.................... void display7() {  
+....................     output_low(LEDA);  
+*
+0125:  BSF    03.5
+0126:  BCF    06.1
+0127:  BCF    03.5
+0128:  BCF    06.1
+....................     output_low(LEDB);  
+0129:  BSF    03.5
+012A:  BCF    06.0
+012B:  BCF    03.5
+012C:  BCF    06.0
+....................     output_low(LEDC);  
+012D:  BSF    03.5
+012E:  BCF    06.6
+012F:  BCF    03.5
+0130:  BCF    06.6
+.................... } 
+.................... void display8() {  
+....................     output_low(LEDA);  
+*
+0132:  BSF    03.5
+0133:  BCF    06.1
+0134:  BCF    03.5
+0135:  BCF    06.1
+....................     output_low(LEDF);  
+0136:  BSF    03.5
+0137:  BCF    06.3
+0138:  BCF    03.5
+0139:  BCF    06.3
+....................     output_low(LEDG);  
+013A:  BSF    03.5
+013B:  BCF    06.2
+013C:  BCF    03.5
+013D:  BCF    06.2
+....................     output_low(LEDC);  
+013E:  BSF    03.5
+013F:  BCF    06.6
+0140:  BCF    03.5
+0141:  BCF    06.6
+....................     output_low(LEDD);  
+0142:  BSF    03.5
+0143:  BCF    06.5
+0144:  BCF    03.5
+0145:  BCF    06.5
+....................     output_low(LEDE);  
+0146:  BSF    03.5
+0147:  BCF    06.4
+0148:  BCF    03.5
+0149:  BCF    06.4
+....................     output_low(LEDB);  
+014A:  BSF    03.5
+014B:  BCF    06.0
+014C:  BCF    03.5
+014D:  BCF    06.0
+.................... } 
+.................... void display9() {  
+....................     output_low(LEDA);  
+*
+014F:  BSF    03.5
+0150:  BCF    06.1
+0151:  BCF    03.5
+0152:  BCF    06.1
+....................     output_low(LEDF);  
+0153:  BSF    03.5
+0154:  BCF    06.3
+0155:  BCF    03.5
+0156:  BCF    06.3
+....................     output_low(LEDG);  
+0157:  BSF    03.5
+0158:  BCF    06.2
+0159:  BCF    03.5
+015A:  BCF    06.2
+....................     output_low(LEDC);  
+015B:  BSF    03.5
+015C:  BCF    06.6
+015D:  BCF    03.5
+015E:  BCF    06.6
+....................     output_low(LEDD);  
+015F:  BSF    03.5
+0160:  BCF    06.5
+0161:  BCF    03.5
+0162:  BCF    06.5
+....................     output_low(LEDB);  
+0163:  BSF    03.5
+0164:  BCF    06.0
+0165:  BCF    03.5
+0166:  BCF    06.0
+.................... } 
+.................... void display0() {  
+....................     output_low(LEDF);  
+*
+009A:  BSF    03.5
+009B:  BCF    06.3
+009C:  BCF    03.5
+009D:  BCF    06.3
+....................     output_low(LEDE);  
+009E:  BSF    03.5
+009F:  BCF    06.4
+00A0:  BCF    03.5
+00A1:  BCF    06.4
+....................     output_low(LEDD);  
+00A2:  BSF    03.5
+00A3:  BCF    06.5
+00A4:  BCF    03.5
+00A5:  BCF    06.5
+....................     output_low(LEDC);  
+00A6:  BSF    03.5
+00A7:  BCF    06.6
+00A8:  BCF    03.5
+00A9:  BCF    06.6
+....................     output_low(LEDB);  
+00AA:  BSF    03.5
+00AB:  BCF    06.0
+00AC:  BCF    03.5
+00AD:  BCF    06.0
+....................     output_low(LEDA);  
+00AE:  BSF    03.5
+00AF:  BCF    06.1
+00B0:  BCF    03.5
+00B1:  BCF    06.1
 .................... } 
 ....................  
 .................... void choose(int num) { 
-....................     switch (num) 
+....................     clearDisplay(); 
 *
-0019:  MOVF   2E,W
-001A:  XORLW  00
-001B:  BTFSC  03.2
-001C:  GOTO   039
-001D:  XORLW  01
-001E:  BTFSC  03.2
-001F:  GOTO   052
-0020:  XORLW  03
-0021:  BTFSC  03.2
-0022:  GOTO   05B
-0023:  XORLW  01
-0024:  BTFSC  03.2
-0025:  GOTO   070
-0026:  XORLW  07
-0027:  BTFSC  03.2
-0028:  GOTO   085
-0029:  XORLW  01
-002A:  BTFSC  03.2
-002B:  GOTO   096
-002C:  XORLW  03
-002D:  BTFSC  03.2
-002E:  GOTO   0AB
-002F:  XORLW  01
-0030:  BTFSC  03.2
-0031:  GOTO   0C4
-0032:  XORLW  0F
-0033:  BTFSC  03.2
-0034:  GOTO   0D1
-0035:  XORLW  01
-0036:  BTFSC  03.2
-0037:  GOTO   0EE
-0038:  GOTO   107
-....................     { 
-....................     case 0: display0(); break; 
+007A:  CALL   004
+....................     switch (num) { 
+007B:  MOVF   2F,W
+007C:  BTFSC  03.2
+007D:  GOTO   09A
+007E:  XORLW  01
+007F:  BTFSC  03.2
+0080:  GOTO   0B3
+0081:  XORLW  03
+0082:  BTFSC  03.2
+0083:  GOTO   0BC
+0084:  XORLW  01
+0085:  BTFSC  03.2
+0086:  GOTO   0D1
+0087:  XORLW  07
+0088:  BTFSC  03.2
+0089:  GOTO   0E6
+008A:  XORLW  01
+008B:  BTFSC  03.2
+008C:  GOTO   0F7
+008D:  XORLW  03
+008E:  BTFSC  03.2
+008F:  GOTO   10C
+0090:  XORLW  01
+0091:  BTFSC  03.2
+0092:  GOTO   125
+0093:  XORLW  0F
+0094:  BTFSC  03.2
+0095:  GOTO   132
+0096:  XORLW  01
+0097:  BTFSC  03.2
+0098:  GOTO   14F
+0099:  GOTO   168
+....................         case 0: display0(); break; 
 *
-0051:  GOTO   107
-....................     case 1: display1(); break; 
+00B2:  GOTO   168
+....................         case 1: display1(); break; 
 *
-005A:  GOTO   107
-....................     case 2: display2(); break; 
+00BB:  GOTO   168
+....................         case 2: display2(); break; 
 *
-006F:  GOTO   107
-....................     case 3: display3(); break; 
+00D0:  GOTO   168
+....................         case 3: display3(); break; 
 *
-0084:  GOTO   107
-....................     case 4: display4(); break; 
+00E5:  GOTO   168
+....................         case 4: display4(); break; 
 *
-0095:  GOTO   107
-....................     case 5: display5(); break; 
+00F6:  GOTO   168
+....................         case 5: display5(); break; 
 *
-00AA:  GOTO   107
-....................     case 6: display6(); break; 
+010B:  GOTO   168
+....................         case 6: display6(); break; 
 *
-00C3:  GOTO   107
-....................     case 7: display7(); break; 
+0124:  GOTO   168
+....................         case 7: display7(); break; 
 *
-00D0:  GOTO   107
-....................     case 8: display8(); break; 
+0131:  GOTO   168
+....................         case 8: display8(); break; 
 *
-00ED:  GOTO   107
-....................     case 9: display9(); break; 
+014E:  GOTO   168
+....................         case 9: display9(); break; 
 *
-0106:  GOTO   107
-....................     default: break; 
+0167:  GOTO   168
+....................         default: break; 
 ....................     } 
-0107:  RETURN
+0168:  RETURN
 .................... } 
 ....................  
 .................... void displayRefresh(int h, int m, int s) { 
 ....................     output_high(ACT1); 
-*
-013A:  BCF    20.7
-013B:  MOVF   20,W
-013C:  BSF    03.5
-013D:  MOVWF  07
-013E:  BCF    03.5
-013F:  BSF    07.7
-....................     output_high(ACT2); 
-0140:  BCF    20.6
-0141:  MOVF   20,W
-0142:  BSF    03.5
-0143:  MOVWF  07
-0144:  BCF    03.5
-0145:  BSF    07.6
+0169:  BCF    20.7
+016A:  MOVF   20,W
+016B:  BSF    03.5
+016C:  MOVWF  07
+016D:  BCF    03.5
+016E:  BSF    07.7
+....................     output_high(ACT2);  
+016F:  BCF    20.6
+0170:  MOVF   20,W
+0171:  BSF    03.5
+0172:  MOVWF  07
+0173:  BCF    03.5
+0174:  BSF    07.6
 ....................     output_high(ACT3); 
-0146:  BCF    20.5
-0147:  MOVF   20,W
-0148:  BSF    03.5
-0149:  MOVWF  07
-014A:  BCF    03.5
-014B:  BSF    07.5
-....................     output_high(ACT4); 
-014C:  BCF    20.4
-014D:  MOVF   20,W
-014E:  BSF    03.5
-014F:  MOVWF  07
-0150:  BCF    03.5
-0151:  BSF    07.4
-....................     output_high(ACT5); 
-0152:  BSF    03.5
-0153:  BCF    08.2
-0154:  BCF    03.5
-0155:  BSF    08.2
+0175:  BCF    20.5
+0176:  MOVF   20,W
+0177:  BSF    03.5
+0178:  MOVWF  07
+0179:  BCF    03.5
+017A:  BSF    07.5
+....................     output_high(ACT4);  
+017B:  BCF    20.4
+017C:  MOVF   20,W
+017D:  BSF    03.5
+017E:  MOVWF  07
+017F:  BCF    03.5
+0180:  BSF    07.4
+....................     output_high(ACT5);  
+0181:  BSF    03.5
+0182:  BCF    08.2
+0183:  BCF    03.5
+0184:  BSF    08.2
 ....................     output_high(ACT6); 
-0156:  BSF    03.5
-0157:  BCF    08.3
-0158:  BCF    03.5
-0159:  BSF    08.3
+0185:  BSF    03.5
+0186:  BCF    08.3
+0187:  BCF    03.5
+0188:  BSF    08.3
 ....................  
 ....................     int horaDez = h / 10; 
 ....................     int horaUnd = h % 10; 
-....................     int minDez = m / 10; 
-....................     int minUnd = m % 10; 
-....................     int segDez = s / 10; 
-....................     int segUnd = s % 10; 
-015A:  MOVF   25,W
-015B:  MOVWF  2E
-015C:  MOVLW  0A
-015D:  MOVWF  2F
-015E:  CALL   004
-015F:  MOVF   78,W
-0160:  MOVWF  28
-0161:  MOVF   25,W
-0162:  MOVWF  2E
-0163:  MOVLW  0A
-0164:  MOVWF  2F
-0165:  CALL   004
-0166:  MOVF   77,W
-0167:  MOVWF  29
-0168:  MOVF   26,W
-0169:  MOVWF  2E
-016A:  MOVLW  0A
-016B:  MOVWF  2F
-016C:  CALL   004
-016D:  MOVF   78,W
-016E:  MOVWF  2A
-016F:  MOVF   26,W
-0170:  MOVWF  2E
-0171:  MOVLW  0A
-0172:  MOVWF  2F
-0173:  CALL   004
-0174:  MOVF   77,W
-0175:  MOVWF  2B
-0176:  MOVF   27,W
-0177:  MOVWF  2E
-0178:  MOVLW  0A
-0179:  MOVWF  2F
-017A:  CALL   004
-017B:  MOVF   78,W
-017C:  MOVWF  2C
-017D:  MOVF   27,W
-017E:  MOVWF  2E
-017F:  MOVLW  0A
-0180:  MOVWF  2F
-0181:  CALL   004
-0182:  MOVF   77,W
-0183:  MOVWF  2D
+....................     int minDez  = m / 10; 
+....................     int minUnd  = m % 10; 
+....................     int segDez  = s / 10; 
+....................     int segUnd  = s % 10; 
+0189:  MOVF   26,W
+018A:  MOVWF  2F
+018B:  MOVLW  0A
+018C:  MOVWF  30
+018D:  CALL   065
+018E:  MOVF   78,W
+018F:  MOVWF  29
+0190:  MOVF   26,W
+0191:  MOVWF  2F
+0192:  MOVLW  0A
+0193:  MOVWF  30
+0194:  CALL   065
+0195:  MOVF   77,W
+0196:  MOVWF  2A
+0197:  MOVF   27,W
+0198:  MOVWF  2F
+0199:  MOVLW  0A
+019A:  MOVWF  30
+019B:  CALL   065
+019C:  MOVF   78,W
+019D:  MOVWF  2B
+019E:  MOVF   27,W
+019F:  MOVWF  2F
+01A0:  MOVLW  0A
+01A1:  MOVWF  30
+01A2:  CALL   065
+01A3:  MOVF   77,W
+01A4:  MOVWF  2C
+01A5:  MOVF   28,W
+01A6:  MOVWF  2F
+01A7:  MOVLW  0A
+01A8:  MOVWF  30
+01A9:  CALL   065
+01AA:  MOVF   78,W
+01AB:  MOVWF  2D
+01AC:  MOVF   28,W
+01AD:  MOVWF  2F
+01AE:  MOVLW  0A
+01AF:  MOVWF  30
+01B0:  CALL   065
+01B1:  MOVF   77,W
+01B2:  MOVWF  2E
+....................  
 ....................      
 ....................     output_low(ACT1); // horaDez 
-0184:  BCF    20.7
-0185:  MOVF   20,W
-0186:  BSF    03.5
-0187:  MOVWF  07
-0188:  BCF    03.5
-0189:  BCF    07.7
+01B3:  BCF    20.7
+01B4:  MOVF   20,W
+01B5:  BSF    03.5
+01B6:  MOVWF  07
+01B7:  BCF    03.5
+01B8:  BCF    07.7
 ....................     choose(horaDez); 
-018A:  MOVF   28,W
-018B:  MOVWF  2E
-018C:  CALL   019
-....................     delay_ms(10); 
-018D:  MOVLW  0A
-018E:  MOVWF  2E
-018F:  CALL   108
+01B9:  MOVF   29,W
+01BA:  MOVWF  2F
+01BB:  CALL   07A
+....................     delay_ms(5);  
+01BC:  MOVLW  05
+01BD:  MOVWF  2F
+01BE:  CALL   021
 ....................     output_high(ACT1); 
-0190:  BCF    20.7
-0191:  MOVF   20,W
-0192:  BSF    03.5
-0193:  MOVWF  07
-0194:  BCF    03.5
-0195:  BSF    07.7
-....................     clearDisplay(); 
-0196:  CALL   11D
-....................      
-....................     output_low(ACT2); // horaUnd 
-0197:  BCF    20.6
-0198:  MOVF   20,W
-0199:  BSF    03.5
-019A:  MOVWF  07
-019B:  BCF    03.5
-019C:  BCF    07.6
-....................     choose(horaUnd); 
-019D:  MOVF   29,W
-019E:  MOVWF  2E
-019F:  CALL   019
-....................     delay_ms(10); 
-01A0:  MOVLW  0A
-01A1:  MOVWF  2E
-01A2:  CALL   108
-....................     output_high(ACT2); 
-01A3:  BCF    20.6
-01A4:  MOVF   20,W
-01A5:  BSF    03.5
-01A6:  MOVWF  07
-01A7:  BCF    03.5
-01A8:  BSF    07.6
-....................     clearDisplay(); 
-01A9:  CALL   11D
+01BF:  BCF    20.7
+01C0:  MOVF   20,W
+01C1:  BSF    03.5
+01C2:  MOVWF  07
+01C3:  BCF    03.5
+01C4:  BSF    07.7
 ....................  
-....................     output_low(ACT3); // minDes 
-01AA:  BCF    20.5
-01AB:  MOVF   20,W
-01AC:  BSF    03.5
-01AD:  MOVWF  07
-01AE:  BCF    03.5
-01AF:  BCF    07.5
-....................     choose(minDez); 
-01B0:  MOVF   2A,W
-01B1:  MOVWF  2E
-01B2:  CALL   019
-....................     delay_ms(10); 
-01B3:  MOVLW  0A
-01B4:  MOVWF  2E
-01B5:  CALL   108
+....................     output_low(ACT2); // horaUnd 
+01C5:  BCF    20.6
+01C6:  MOVF   20,W
+01C7:  BSF    03.5
+01C8:  MOVWF  07
+01C9:  BCF    03.5
+01CA:  BCF    07.6
+....................     choose(horaUnd);  
+01CB:  MOVF   2A,W
+01CC:  MOVWF  2F
+01CD:  CALL   07A
+....................     delay_ms(5);  
+01CE:  MOVLW  05
+01CF:  MOVWF  2F
+01D0:  CALL   021
+....................     output_high(ACT2); 
+01D1:  BCF    20.6
+01D2:  MOVF   20,W
+01D3:  BSF    03.5
+01D4:  MOVWF  07
+01D5:  BCF    03.5
+01D6:  BSF    07.6
+....................  
+....................     output_low(ACT3); // minDez 
+01D7:  BCF    20.5
+01D8:  MOVF   20,W
+01D9:  BSF    03.5
+01DA:  MOVWF  07
+01DB:  BCF    03.5
+01DC:  BCF    07.5
+....................     choose(minDez);   
+01DD:  MOVF   2B,W
+01DE:  MOVWF  2F
+01DF:  CALL   07A
+....................     delay_ms(5);  
+01E0:  MOVLW  05
+01E1:  MOVWF  2F
+01E2:  CALL   021
 ....................     output_high(ACT3); 
-01B6:  BCF    20.5
-01B7:  MOVF   20,W
-01B8:  BSF    03.5
-01B9:  MOVWF  07
-01BA:  BCF    03.5
-01BB:  BSF    07.5
-....................     clearDisplay(); 
-01BC:  CALL   11D
+01E3:  BCF    20.5
+01E4:  MOVF   20,W
+01E5:  BSF    03.5
+01E6:  MOVWF  07
+01E7:  BCF    03.5
+01E8:  BSF    07.5
 ....................  
 ....................     output_low(ACT4); // minUnd 
-01BD:  BCF    20.4
-01BE:  MOVF   20,W
-01BF:  BSF    03.5
-01C0:  MOVWF  07
-01C1:  BCF    03.5
-01C2:  BCF    07.4
-....................     choose(minUnd); 
-01C3:  MOVF   2B,W
-01C4:  MOVWF  2E
-01C5:  CALL   019
-....................     delay_ms(10); 
-01C6:  MOVLW  0A
-01C7:  MOVWF  2E
-01C8:  CALL   108
+01E9:  BCF    20.4
+01EA:  MOVF   20,W
+01EB:  BSF    03.5
+01EC:  MOVWF  07
+01ED:  BCF    03.5
+01EE:  BCF    07.4
+....................     choose(minUnd);   
+01EF:  MOVF   2C,W
+01F0:  MOVWF  2F
+01F1:  CALL   07A
+....................     delay_ms(5);  
+01F2:  MOVLW  05
+01F3:  MOVWF  2F
+01F4:  CALL   021
 ....................     output_high(ACT4); 
-01C9:  BCF    20.4
-01CA:  MOVF   20,W
-01CB:  BSF    03.5
-01CC:  MOVWF  07
-01CD:  BCF    03.5
-01CE:  BSF    07.4
-....................     clearDisplay(); 
-01CF:  CALL   11D
+01F5:  BCF    20.4
+01F6:  MOVF   20,W
+01F7:  BSF    03.5
+01F8:  MOVWF  07
+01F9:  BCF    03.5
+01FA:  BSF    07.4
 ....................  
 ....................     output_low(ACT5); // segDez 
-01D0:  BSF    03.5
-01D1:  BCF    08.2
-01D2:  BCF    03.5
-01D3:  BCF    08.2
-....................     choose(segDez); 
-01D4:  MOVF   2C,W
-01D5:  MOVWF  2E
-01D6:  CALL   019
-....................     delay_ms(10); 
-01D7:  MOVLW  0A
-01D8:  MOVWF  2E
-01D9:  CALL   108
+01FB:  BSF    03.5
+01FC:  BCF    08.2
+01FD:  BCF    03.5
+01FE:  BCF    08.2
+....................     choose(segDez);   
+01FF:  MOVF   2D,W
+0200:  MOVWF  2F
+0201:  CALL   07A
+....................     delay_ms(5);  
+0202:  MOVLW  05
+0203:  MOVWF  2F
+0204:  CALL   021
 ....................     output_high(ACT5); 
-01DA:  BSF    03.5
-01DB:  BCF    08.2
-01DC:  BCF    03.5
-01DD:  BSF    08.2
-....................     clearDisplay(); 
-01DE:  CALL   11D
+0205:  BSF    03.5
+0206:  BCF    08.2
+0207:  BCF    03.5
+0208:  BSF    08.2
 ....................  
-....................     output_low(ACT6); // segUnd 
-01DF:  BSF    03.5
-01E0:  BCF    08.3
-01E1:  BCF    03.5
-01E2:  BCF    08.3
-....................     choose(segUnd); 
-01E3:  MOVF   2D,W
-01E4:  MOVWF  2E
-01E5:  CALL   019
-....................     delay_ms(10); 
-01E6:  MOVLW  0A
-01E7:  MOVWF  2E
-01E8:  CALL   108
+....................     output_low(ACT6); //segUnd 
+0209:  BSF    03.5
+020A:  BCF    08.3
+020B:  BCF    03.5
+020C:  BCF    08.3
+....................     choose(segUnd);   
+020D:  MOVF   2E,W
+020E:  MOVWF  2F
+020F:  CALL   07A
+....................     delay_ms(5);  
+0210:  MOVLW  05
+0211:  MOVWF  2F
+0212:  CALL   021
 ....................     output_high(ACT6); 
-01E9:  BSF    03.5
-01EA:  BCF    08.3
-01EB:  BCF    03.5
-01EC:  BSF    08.3
-....................     clearDisplay(); 
-01ED:  CALL   11D
-01EE:  BCF    0A.3
-01EF:  BCF    0A.4
-01F0:  GOTO   20A (RETURN)
+0213:  BSF    03.5
+0214:  BCF    08.3
+0215:  BCF    03.5
+0216:  BSF    08.3
+0217:  BCF    0A.3
+0218:  BCF    0A.4
+0219:  GOTO   235 (RETURN)
 .................... } 
 ....................  
+.................... void testes() { 
+....................     clearDisplay(); 
+*
+0036:  CALL   004
+....................     output_low(LEDA);  
+0037:  BSF    03.5
+0038:  BCF    06.1
+0039:  BCF    03.5
+003A:  BCF    06.1
+....................     output_low(LEDB);  
+003B:  BSF    03.5
+003C:  BCF    06.0
+003D:  BCF    03.5
+003E:  BCF    06.0
+....................     output_low(LEDC); 
+003F:  BSF    03.5
+0040:  BCF    06.6
+0041:  BCF    03.5
+0042:  BCF    06.6
+....................     output_low(LEDD);  
+0043:  BSF    03.5
+0044:  BCF    06.5
+0045:  BCF    03.5
+0046:  BCF    06.5
+....................     output_low(LEDE);  
+0047:  BSF    03.5
+0048:  BCF    06.4
+0049:  BCF    03.5
+004A:  BCF    06.4
+....................     output_low(LEDF);  
+004B:  BSF    03.5
+004C:  BCF    06.3
+004D:  BCF    03.5
+004E:  BCF    06.3
+....................     output_low(LEDG); 
+004F:  BSF    03.5
+0050:  BCF    06.2
+0051:  BCF    03.5
+0052:  BCF    06.2
+....................     delay_ms(500); 
+0053:  MOVLW  02
+0054:  MOVWF  26
+0055:  MOVLW  FA
+0056:  MOVWF  2F
+0057:  CALL   021
+0058:  DECFSZ 26,F
+0059:  GOTO   055
+....................     clearDisplay(); 
+005A:  CALL   004
+....................     delay_ms(500); 
+005B:  MOVLW  02
+005C:  MOVWF  26
+005D:  MOVLW  FA
+005E:  MOVWF  2F
+005F:  CALL   021
+0060:  DECFSZ 26,F
+0061:  GOTO   05D
+0062:  BCF    0A.3
+0063:  BCF    0A.4
+0064:  GOTO   22E (RETURN)
+.................... } 
 ....................  
 .................... void main() { 
-01F1:  MOVF   03,W
-01F2:  ANDLW  1F
-01F3:  MOVWF  03
-01F4:  MOVLW  FF
-01F5:  MOVWF  20
-01F6:  BSF    03.5
-01F7:  BSF    1F.0
-01F8:  BSF    1F.1
-01F9:  BSF    1F.2
-01FA:  BCF    1F.3
-01FB:  MOVLW  07
-01FC:  MOVWF  1C
-01FD:  BCF    03.7
-01FE:  BCF    03.5
-01FF:  CLRF   21
-0200:  CLRF   22
-0201:  CLRF   23
-0202:  CLRF   24
+*
+021A:  MOVF   03,W
+021B:  ANDLW  1F
+021C:  MOVWF  03
+021D:  MOVLW  FF
+021E:  MOVWF  20
+021F:  BSF    03.5
+0220:  BSF    1F.0
+0221:  BSF    1F.1
+0222:  BSF    1F.2
+0223:  BCF    1F.3
+0224:  MOVLW  07
+0225:  MOVWF  1C
+0226:  BCF    03.7
+0227:  BCF    03.5
+0228:  CLRF   21
+0229:  CLRF   22
+022A:  CLRF   23
+022B:  CLRF   25
+022C:  CLRF   24
 ....................     int hours = 0; 
 ....................     int minutes = 0; 
 ....................     int seconds = 0; 
-....................     int counter = 0; 
-....................      
+....................     long acc = 0; 
+....................  
+....................     testes(); 
+022D:  GOTO   036
+....................  
 ....................     while(1) { 
-....................         // Refresh display continuously (multiplexing) 
 ....................         displayRefresh(hours, minutes, seconds); 
-0203:  MOVF   21,W
-0204:  MOVWF  25
-0205:  MOVF   22,W
-0206:  MOVWF  26
-0207:  MOVF   23,W
-0208:  MOVWF  27
-0209:  GOTO   13A
-....................          
-....................         counter++; 
-020A:  INCF   24,F
-....................          
-....................         // After 100 refreshes, increment seconds (assuming each refresh takes ~10ms) 
-....................         if(counter >= 100) { 
-020B:  MOVF   24,W
-020C:  SUBLW  63
-020D:  BTFSC  03.0
-020E:  GOTO   221
-....................             counter = 0; 
-020F:  CLRF   24
+022E:  MOVF   21,W
+022F:  MOVWF  26
+0230:  MOVF   22,W
+0231:  MOVWF  27
+0232:  MOVF   23,W
+0233:  MOVWF  28
+0234:  GOTO   169
+....................  
+....................         acc += 31204; 
+0235:  MOVLW  E4
+0236:  ADDWF  24,F
+0237:  MOVLW  79
+0238:  BTFSC  03.0
+0239:  MOVLW  7A
+023A:  ADDWF  25,F
+....................  
+....................         if(acc >= 1000000L) { 
+....................             acc -= 1000000L; 
 ....................             seconds++; 
-0210:  INCF   23,F
 ....................             if(seconds >= 60) { 
-0211:  MOVF   23,W
-0212:  SUBLW  3B
-0213:  BTFSC  03.0
-0214:  GOTO   221
 ....................                 seconds = 0; 
-0215:  CLRF   23
 ....................                 minutes++; 
-0216:  INCF   22,F
 ....................                 if(minutes >= 60) { 
-0217:  MOVF   22,W
-0218:  SUBLW  3B
-0219:  BTFSC  03.0
-021A:  GOTO   221
 ....................                     minutes = 0; 
-021B:  CLRF   22
 ....................                     hours++; 
-021C:  INCF   21,F
-....................                     if(hours >= 24) { 
-021D:  MOVF   21,W
-021E:  SUBLW  17
-021F:  BTFSS  03.0
-....................                         hours = 0; 
-0220:  CLRF   21
-....................                     } 
+....................                     if(hours >= 24) hours = 0; 
 ....................                 } 
 ....................             } 
 ....................         } 
-0221:  GOTO   203
+023B:  GOTO   22E
 ....................     } 
 .................... } 
-0222:  SLEEP
+023C:  SLEEP
 
 Configuration Fuses:
    Word  1: 2F0A   HS NOWDT NOPUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

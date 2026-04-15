@@ -1,7 +1,7 @@
 D G "__PCM__" 0 0 ""5.049""
 D G "__DEVICE__" 0 0 ""
 D G "__DATE__" 0 0 ""15-Apr-26""
-D G "__TIME__" 0 0 ""15:21:38""
+D G "__TIME__" 0 0 ""14:49:41""
 D G "_UNICODE" 0 0 ""?""
 D G "__EVAL" 0 0 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
@@ -1032,70 +1032,61 @@ d G "INT_BUSCOL" 1 668 "0x008D08"
 d G "INT_EEPROM" 1 669 "0x008D10"
 d G "INT_TIMER0" 1 670 "0x000B20"
 d G "INT_COMP" 1 671 "0x008D40"
-D G "LEDA" 0 6 "PIN_B1"
-D G "LEDB" 0 7 "PIN_B0"
-D G "LEDC" 0 8 "PIN_B6"
-D G "LEDD" 0 9 "PIN_B5"
-D G "LEDE" 0 10 "PIN_B4"
-D G "LEDF" 0 11 "PIN_B3"
-D G "LEDG" 0 12 "PIN_B2"
-D G "LEDPT" 0 13 "PIN_B7"
-D G "ACT1" 0 15 "PIN_C7"
-D G "ACT2" 0 16 "PIN_C6"
-D G "ACT3" 0 17 "PIN_C5"
-D G "ACT4" 0 18 "PIN_C4"
-D G "ACT5" 0 19 "PIN_D2"
-D G "ACT6" 0 20 "PIN_D3"
-F N "clearDisplay" 0 22 ""
-F G "clearDisplay" 0 22 "void()" `596 
+D G "LEDA" 0 7 "PIN_B1"
+D G "LEDB" 0 8 "PIN_B0"
+D G "LEDC" 0 9 "PIN_B6"
+D G "LEDD" 0 10 "PIN_B5"
+D G "LEDE" 0 11 "PIN_B4"
+D G "LEDF" 0 12 "PIN_B3"
+D G "LEDG" 0 13 "PIN_B2"
+D G "LEDPT" 0 14 "PIN_B7"
+D G "ACT1" 0 16 "PIN_C7"
+D G "ACT2" 0 17 "PIN_C6"
+D G "ACT3" 0 18 "PIN_C5"
+D G "ACT4" 0 19 "PIN_C4"
+D G "ACT5" 0 20 "PIN_D2"
+D G "ACT6" 0 21 "PIN_D3"
+D G "TEST_PIN" 0 24 "PIN_D0"
+F N "clearDisplay" 0 26 ""
+F G "clearDisplay" 0 26 "void()" `596 
 F N "display1" 0 32 ""
 F G "display1" 0 32 "void()" `597 
-F N "display2" 0 36 ""
-F G "display2" 0 36 "void()" `598 
-F N "display3" 0 43 ""
-F G "display3" 0 43 "void()" `599 
-F N "display4" 0 50 ""
-F G "display4" 0 50 "void()" `600 
-F N "display5" 0 56 ""
-F G "display5" 0 56 "void()" `601 
-F N "display6" 0 63 ""
-F G "display6" 0 63 "void()" `602 
-F N "display7" 0 71 ""
-F G "display7" 0 71 "void()" `603 
-F N "display8" 0 76 ""
-F G "display8" 0 76 "void()" `604 
-F N "display9" 0 85 ""
-F G "display9" 0 85 "void()" `605 
-F N "display0" 0 93 ""
-F G "display0" 0 93 "void()" `606 
-F N "choose" 0 102 ""
-V L "num" 0 102 "int8" `608 
-F G "choose" 0 102 "void(int8 num)" `607 
-F N "displayRefresh" 0 119 ""
-V L "h" 0 119 "int8" `610 
-V L "m" 0 119 "int8" `611 
-V L "s" 0 119 "int8" `612 
-F G "displayRefresh" 0 119 "void(int8 h,int8 m,int8 s)" `609 
-V L "horaDez" 0 127 "int8" `614 
-V L "horaUnd" 0 128 "int8" `618 
-V L "minDez" 0 129 "int8" `619 
-V L "minUnd" 0 130 "int8" `620 
-V L "segDez" 0 131 "int8" `621 
-V L "segUnd" 0 132 "int8" `622 
-C L "displayRefresh" 0 135 1 "FUNCTION"
-C L "displayRefresh" 0 135 1 "FUNCTION"
-C L "displayRefresh" 0 135 1 "FUNCTION"
-C L "displayRefresh" 0 135 1 "FUNCTION"
-C L "displayRefresh" 0 135 1 "FUNCTION"
-C L "displayRefresh" 0 135 1 "FUNCTION"
-F N "testes" 0 166 ""
-F G "testes" 0 166 "void()" `623 
-F N "MAIN" 0 180 ""
-F G "MAIN" 0 180 "void()" `624 
-V L "hours" 0 181 "int8" `625 
-V L "minutes" 0 182 "int8" `626 
-V L "seconds" 0 183 "int8" `627 
-V L "acc" 0 184 "int16" `628 
+F N "display2" 0 33 ""
+F G "display2" 0 33 "void()" `598 
+F N "display3" 0 34 ""
+F G "display3" 0 34 "void()" `599 
+F N "display4" 0 35 ""
+F G "display4" 0 35 "void()" `600 
+F N "display5" 0 36 ""
+F G "display5" 0 36 "void()" `601 
+F N "display6" 0 37 ""
+F G "display6" 0 37 "void()" `602 
+F N "display7" 0 38 ""
+F G "display7" 0 38 "void()" `603 
+F N "display8" 0 39 ""
+F G "display8" 0 39 "void()" `604 
+F N "display9" 0 40 ""
+F G "display9" 0 40 "void()" `605 
+F N "display0" 0 41 ""
+F G "display0" 0 41 "void()" `606 
+F N "choose" 0 43 ""
+V L "num" 0 43 "int8" `608 
+F G "choose" 0 43 "void(int8 num)" `607 
+F N "displayRefresh" 0 60 ""
+V L "h" 0 60 "int8" `610 
+V L "m" 0 60 "int8" `611 
+V L "s" 0 60 "int8" `612 
+F G "displayRefresh" 0 60 "void(int8 h,int8 m,int8 s)" `609 
+V L "horaDez" 0 64 "int8" `614 
+V L "horaUnd" 0 64 "int8" `618 
+V L "minDez" 0 65 "int8" `619 
+V L "minUnd" 0 65 "int8" `620 
+V L "segDez" 0 66 "int8" `621 
+V L "segUnd" 0 66 "int8" `622 
+F N "MAIN" 0 76 ""
+F G "MAIN" 0 76 "void()" `623 
+V L "i" 0 77 "int8" `624 
+C L "MAIN" 0 6 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0
