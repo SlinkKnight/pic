@@ -1,0 +1,91 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     @TRIS_C
+021     MAIN.hours
+022     MAIN.minutes
+023     MAIN.seconds
+024     MAIN.counter
+025     displayRefresh.h
+026     displayRefresh.m
+027     displayRefresh.s
+028     displayRefresh.horaDez
+029     displayRefresh.horaUnd
+02A     displayRefresh.minDez
+02B     displayRefresh.minUnd
+02C     displayRefresh.segDez
+02D     displayRefresh.segUnd
+02E     @DIV88.P1
+02E     @delay_ms1.P2
+02E     choose.num
+02F     @DIV88.P1
+030     @DIV88.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @DIV88
+000019  choose
+000039  display0
+000052  display1
+00005B  display2
+000070  display3
+000085  display4
+000096  display5
+0000AB  display6
+0000C4  display7
+0000D1  display8
+0000EE  display9
+000108  @delay_ms1
+00011D  clearDisplay
+00013A  displayRefresh
+0001F1  MAIN
+0001F1  @cinit1
+0001FD  @cinit2
+
+Project Directory:
+    C:\Users\Vicenzo\Desktop\Escola\info Industrial\pic\14-04\
+
+Project Files:
+    main.c                                                  [15-Apr-26 12:07  CRC=33AAB2B9]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\devices\16F877A.h [08-Sep-15 15:15  CRC=B168AC0E]
+
+Source signature=967C0AD5
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=DD41
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/eCOD:  main.cod
+    Project:     main.ccspjt
