@@ -163,7 +163,7 @@ void displayRefresh(int h, int m, int s) {
     output_high(ACT6);
 }
 
-void testes() {
+void teste() {
     clearDisplay();
     output_low(LEDA); 
     output_low(LEDB); 
