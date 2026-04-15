@@ -1,0 +1,8 @@
+# CCS compiler and build artifacts
+*.ccspjt
+*.cod
+*.err
+*.esym
+*.lst
+*.sym
+*.xsym
