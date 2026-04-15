@@ -1,6 +1,0 @@
-C:\Users\Vicenzo\Desktop\Escola\info Industrial\pic\14-04\main.c:188:1:  Warning#203  Condition always TRUE
-C:\Users\Vicenzo\Desktop\Escola\info Industrial\pic\14-04\main.c:193:1:  Warning#206  Variable of this data type is never greater than this constant
-C:\Users\Vicenzo\Desktop\Escola\info Industrial\pic\14-04\main.c:193:1:  Warning#204  Condition always FALSE
-      Memory usage:   ROM=7%      RAM=3% - 6%
-      0 Errors,  3 Warnings.
-Build Successful.
