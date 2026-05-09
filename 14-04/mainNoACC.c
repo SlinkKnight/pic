@@ -91,12 +91,12 @@ void display9() {
     output_low(LEDB); 
 }
 void display0() { 
-    output_low(LEDF); 
-    output_low(LEDE); 
-    output_low(LEDD); 
-    output_low(LEDC); 
-    output_low(LEDB); 
     output_low(LEDA); 
+    output_low(LEDF);
+    output_low(LEDC); 
+    output_low(LEDD); 
+    output_low(LEDE); 
+    output_low(LEDB); 
 }
 
 void choose(int num) {
