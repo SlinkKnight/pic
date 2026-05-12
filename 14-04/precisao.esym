@@ -1,7 +1,7 @@
 D G "__PCM__" 0 0 ""5.049""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""15-Apr-26""
-D G "__TIME__" 0 0 ""14:49:41""
+D G "__DATE__" 0 0 ""12-May-26""
+D G "__TIME__" 0 0 ""19:44:52""
 D G "_UNICODE" 0 0 ""?""
 D G "__EVAL" 0 0 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
@@ -1083,9 +1083,26 @@ V L "minDez" 0 65 "int8" `619
 V L "minUnd" 0 65 "int8" `620 
 V L "segDez" 0 66 "int8" `621 
 V L "segUnd" 0 66 "int8" `622 
-F N "MAIN" 0 76 ""
-F G "MAIN" 0 76 "void()" `623 
-V L "i" 0 77 "int8" `624 
+F N "testeBase" 0 76 ""
+F G "testeBase" 0 76 "void()" `623 
+F N "testeSeconds" 0 82 ""
+F G "testeSeconds" 0 82 "void()" `624 
+V L "s" 0 87 "int8" `625 
+F N "testeMinutes" 0 96 ""
+F G "testeMinutes" 0 96 "void()" `626 
+V L "s" 0 101 "int8" `627 
+V L "m" 0 101 "int8" `628 
+F N "testeHours" 0 116 ""
+F G "testeHours" 0 116 "void()" `629 
+V L "s" 0 121 "int8" `630 
+V L "m" 0 121 "int8" `631 
+V L "h" 0 121 "int8" `632 
+F N "MAIN" 0 142 ""
+F G "MAIN" 0 142 "void()" `633 
+V L "i" 0 144 "int16" `634 
+C L "MAIN" 0 6 1 "FUNCTION"
+C L "MAIN" 0 6 1 "FUNCTION"
+C L "MAIN" 0 6 1 "FUNCTION"
 C L "MAIN" 0 6 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0

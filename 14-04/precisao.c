@@ -65,24 +65,120 @@ void displayRefresh(int h, int m, int s) {
     int minDez  = m / 10, minUnd  = m % 10;
     int segDez  = s / 10, segUnd  = s % 10;
 
-    output_low(ACT1); choose(horaDez); delay_ms(5); output_high(ACT1);
-    output_low(ACT2); choose(horaUnd); delay_ms(5); output_high(ACT2);
-    output_low(ACT3); choose(minDez);  delay_ms(5); output_high(ACT3);
-    output_low(ACT4); choose(minUnd);  delay_ms(5); output_high(ACT4);
-    output_low(ACT5); choose(segDez);  delay_ms(5); output_high(ACT5);
-    output_low(ACT6); choose(segUnd);  delay_ms(5); output_high(ACT6);
+    output_low(ACT1); choose(horaDez); delay_ms(1); output_high(ACT1);
+    output_low(ACT2); choose(horaUnd); delay_ms(1); output_high(ACT2);
+    output_low(ACT3); choose(minDez);  delay_ms(1); output_high(ACT3);
+    output_low(ACT4); choose(minUnd);  delay_ms(1); output_high(ACT4);
+    output_low(ACT5); choose(segDez);  delay_ms(1); output_high(ACT5);
+    output_low(ACT6); choose(segUnd);  delay_ms(1); output_high(ACT6);
+}
+
+void testeBase() {
+    output_low(TEST_PIN);
+    displayRefresh(0, 0, 0);
+    output_high(TEST_PIN);
+}
+
+void testeSeconds() {
+    output_low(TEST_PIN);
+    displayRefresh(0, 0, 0);
+    output_high(TEST_PIN);
+
+    int8 s = 59;
+
+    s++;
+
+    if(s >= 60) {
+        s = 0;
+    }
+}
+
+void testeMinutes() {
+    output_low(TEST_PIN);
+    displayRefresh(0, 0, 0);
+    output_high(TEST_PIN);
+
+    int8 s = 59, m = 59;
+
+    s++;
+
+    if(s >= 60) {
+        s = 0;
+
+        m++;
+
+        if(m >= 60) {
+            m = 0;
+        }
+    }
+}
+
+void testeHours() {
+    output_low(TEST_PIN);
+    displayRefresh(0, 0, 0);
+    output_high(TEST_PIN);
+
+    int8 s = 59, m = 59, h = 23;
+
+    s++;
+
+    if(s >= 60) {
+        s = 0;
+
+        m++;
+
+        if(m >= 60) {
+            m = 0;
+
+            h++;
+
+            if(h >= 24) {
+                h = 0;
+            }
+        }
+    }
 }
 
 void main() {
-    int i;
-    output_low(TEST_PIN);
-    
+
+    int16 i;
+
     while(TRUE) {
-        output_high(TEST_PIN);
-        for(i = 0; i < 100; i++) {   // 100 iterações
-            displayRefresh(12, 34, 56);
+
+        // =====================
+        // TESTE BASE
+        // =====================
+        for(i = 0; i < 100; i++) {
+            testeBase();
         }
-        output_low(TEST_PIN);
+
         delay_ms(1000);
-    } 
+
+        // =====================
+        // TESTE SECONDS
+        // =====================
+        for(i = 0; i < 100; i++) {
+            testeSeconds();
+        }
+
+        delay_ms(1000);
+
+        // =====================
+        // TESTE MINUTES
+        // =====================
+        for(i = 0; i < 100; i++) {
+            testeMinutes();
+        }
+
+        delay_ms(1000);
+
+        // =====================
+        // TESTE HOURS
+        // =====================
+        for(i = 0; i < 100; i++) {
+            testeHours();
+        }
+
+        delay_ms(3000);
+    }
 }

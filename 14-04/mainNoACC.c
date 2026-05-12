@@ -1,9 +1,10 @@
 #include <16F877A.h>
+
 #device adc=10
 #use delay(crystal=4MHz)
 #FUSES NOPUT, NOBROWNOUT, NOLVP, HS, NOWDT
 
-#define LEDA    PIN_B1
+#define LEDA    PIN_D4
 #define LEDB    PIN_B0
 #define LEDC    PIN_B6
 #define LEDD    PIN_B5
@@ -12,12 +13,12 @@
 #define LEDG    PIN_B2
 #define LEDPT   PIN_B7
 
-#define ACT1    PIN_C7
-#define ACT2    PIN_C6    
-#define ACT3    PIN_C5
-#define ACT4    PIN_C4
-#define ACT5    PIN_D2
-#define ACT6    PIN_D3
+#define ACT1    PIN_C7 //hrdez
+#define ACT2    PIN_C6 //hrund
+#define ACT3    PIN_C5 //mindez
+#define ACT4    PIN_C4 //minund
+#define ACT5    PIN_D2 //segdez
+#define ACT6    PIN_D3 //segund
 
 void clearDisplay() {
     output_high(LEDA); 
@@ -134,32 +135,32 @@ void displayRefresh(int h, int m, int s) {
     
     output_low(ACT1); // horaDez
     choose(horaDez);
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT1);
 
     output_low(ACT2); // horaUnd
     choose(horaUnd); 
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT2);
 
     output_low(ACT3); // minDez
     choose(minDez);  
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT3);
 
     output_low(ACT4); // minUnd
     choose(minUnd);  
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT4);
 
     output_low(ACT5); // segDez
     choose(segDez);  
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT5);
 
     output_low(ACT6); //segUnd
     choose(segUnd);  
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT6);
 }
 
@@ -184,6 +185,7 @@ void main() {
     int i = 0;
 
     teste();
+    clearDisplay();
 
     while(1) {
         displayRefresh(hours, minutes, seconds);
@@ -205,3 +207,13 @@ void main() {
         }
     }
 }
+
+/** 
+
+void main() {
+    while(1) {
+        displayRefresh(0,0,0);
+    }
+}
+
+*/

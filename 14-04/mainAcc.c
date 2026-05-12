@@ -3,7 +3,7 @@
 #use delay(crystal=4MHz)
 #FUSES NOPUT, NOBROWNOUT, NOLVP, HS, NOWDT
 
-#define LEDA    PIN_B1
+#define LEDA    PIN_D4
 #define LEDB    PIN_B0
 #define LEDC    PIN_B6
 #define LEDD    PIN_B5
@@ -18,6 +18,8 @@
 #define ACT4    PIN_C4
 #define ACT5    PIN_D2
 #define ACT6    PIN_D3
+
+#define TEST_PIN PIN_D0
 
 void clearDisplay() {
     output_high(LEDA); 
@@ -134,32 +136,32 @@ void displayRefresh(int h, int m, int s) {
     
     output_low(ACT1); // horaDez
     choose(horaDez);
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT1);
 
     output_low(ACT2); // horaUnd
     choose(horaUnd); 
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT2);
 
     output_low(ACT3); // minDez
     choose(minDez);  
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT3);
 
     output_low(ACT4); // minUnd
     choose(minUnd);  
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT4);
 
     output_low(ACT5); // segDez
     choose(segDez);  
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT5);
 
     output_low(ACT6); //segUnd
     choose(segUnd);  
-    delay_ms(5); 
+    delay_ms(1); 
     output_high(ACT6);
 }
 
@@ -178,30 +180,43 @@ void testes() {
 }
 
 void main() {
-    int hours = 0;
-    int minutes = 0;
-    int seconds = 0;
-    long acc = 0;
+    int8  hours   = 0;
+    int8  minutes = 0;
+    int8  seconds = 0;
+    int32 acc     = 0;
 
     testes();
 
-    while(1) {
-        displayRefresh(hours, minutes, seconds);
+while(1) {
 
-        acc += 31204;
+    output_low(TEST_PIN);
 
-        if(acc >= 1000000L) {
-            acc -= 1000000L;
-            seconds++;
-            if(seconds >= 60) {
-                seconds = 0;
-                minutes++;
-                if(minutes >= 60) {
-                    minutes = 0;
-                    hours++;
-                    if(hours >= 24) hours = 0;
+    displayRefresh(hours, minutes, seconds);
+
+    acc += 6645;
+
+    output_high(TEST_PIN);
+
+    if(acc >= 1000000) {
+        acc -= 1000000;
+        seconds++;
+        if(seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if(minutes >= 60) {
+                minutes = 0;
+                hours++;
+                if(hours >= 24) {
+                    hours = 0;
                 }
+            } else {
+                delay_us(8);
             }
+        } else {
+            delay_us(15);
         }
+    } else {
+        delay_us(22);
     }
+}
 }
