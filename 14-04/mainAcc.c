@@ -1,222 +1,160 @@
 #include <16F877A.h>
+
 #device adc=10
 #use delay(crystal=4MHz)
 #FUSES NOPUT, NOBROWNOUT, NOLVP, HS, NOWDT
 
-#define LEDA    PIN_D4
-#define LEDB    PIN_B0
-#define LEDC    PIN_B6
-#define LEDD    PIN_B5
-#define LEDE    PIN_B4
-#define LEDF    PIN_B3
-#define LEDG    PIN_B2
-#define LEDPT   PIN_B7
-
-#define ACT1    PIN_C7
-#define ACT2    PIN_C6    
-#define ACT3    PIN_C5
-#define ACT4    PIN_C4
-#define ACT5    PIN_D2
-#define ACT6    PIN_D3
-
+#define LEDA     PIN_D4
+#define ACT1     PIN_C7
+#define ACT2     PIN_C6    
+#define ACT3     PIN_C5
+#define ACT4     PIN_C4
+#define ACT5     PIN_D2
+#define ACT6     PIN_D3
 #define TEST_PIN PIN_D0
 
-void clearDisplay() {
-    output_high(LEDA); 
-    output_high(LEDB); 
-    output_high(LEDC);
-    output_high(LEDD); 
-    output_high(LEDE); 
-    output_high(LEDF);
-    output_high(LEDG);
+int8 segs[10] = {
+    0b10000100, // 0
+    0b10111110, // 1
+    0b11001000, // 2
+    0b10011000, // 3
+    0b10110010, // 4
+    0b10010001, // 5
+    0b10000001, // 6
+    0b10111100, // 7
+    0b10000000, // 8
+    0b10010000  // 9
+};
+
+void choose(int8 num) {
+    output_b(segs[num]);
 }
 
-void display1() { 
-    output_low(LEDB); 
-    output_low(LEDC); 
-}
-void display2() { 
-    output_low(LEDD); 
-    output_low(LEDE); 
-    output_low(LEDG); 
-    output_low(LEDB); 
-    output_low(LEDA); 
-}
-void display3() { 
-    output_low(LEDA); 
-    output_low(LEDB); 
-    output_low(LEDG); 
-    output_low(LEDC); 
-    output_low(LEDD); 
-}
-void display4() { 
-    output_low(LEDC); 
-    output_low(LEDG); 
-    output_low(LEDF); 
-    output_low(LEDB); 
-}
-void display5() { 
-    output_low(LEDA); 
-    output_low(LEDF); 
-    output_low(LEDG); 
-    output_low(LEDC); 
-    output_low(LEDD); 
-}
-void display6() { 
-    output_low(LEDA); 
-    output_low(LEDF); 
-    output_low(LEDG); 
-    output_low(LEDC); 
-    output_low(LEDD); 
-    output_low(LEDE); 
-}
-void display7() { 
-    output_low(LEDA); 
-    output_low(LEDB); 
-    output_low(LEDC); 
-}
-void display8() { 
-    output_low(LEDA); 
-    output_low(LEDF); 
-    output_low(LEDG); 
-    output_low(LEDC); 
-    output_low(LEDD); 
-    output_low(LEDE); 
-    output_low(LEDB); 
-}
-void display9() { 
-    output_low(LEDA); 
-    output_low(LEDF); 
-    output_low(LEDG); 
-    output_low(LEDC); 
-    output_low(LEDD); 
-    output_low(LEDB); 
-}
-void display0() { 
-    output_low(LEDF); 
-    output_low(LEDE); 
-    output_low(LEDD); 
-    output_low(LEDC); 
-    output_low(LEDB); 
-    output_low(LEDA); 
-}
+int8 segUnd = 0;
+int8 segDez = 0;
+int8 minUnd = 0;
+int8 minDez = 0;
+int8 horaUnd = 0;
+int8 horaDez = 0;
 
-void choose(int num) {
-    clearDisplay();
-    switch (num) {
-        case 0: display0(); break;
-        case 1: display1(); break;
-        case 2: display2(); break;
-        case 3: display3(); break;
-        case 4: display4(); break;
-        case 5: display5(); break;
-        case 6: display6(); break;
-        case 7: display7(); break;
-        case 8: display8(); break;
-        case 9: display9(); break;
-        default: break;
-    }
-}
-
-void displayRefresh(int h, int m, int s) {
+void displayRefresh() {
     output_high(ACT1);
-    output_high(ACT2); 
-    output_high(ACT3);
-    output_high(ACT4); 
+    output_high(ACT2);
+    output_high(ACT3); 
+    output_high(ACT4);
     output_high(ACT5); 
     output_high(ACT6);
 
-    int horaDez = h / 10;
-    int horaUnd = h % 10;
-    int minDez  = m / 10;
-    int minUnd  = m % 10;
-    int segDez  = s / 10;
-    int segUnd  = s % 10;
-
-    
-    output_low(ACT1); // horaDez
+    output_low(ACT1); 
     choose(horaDez);
-    delay_ms(1); 
+    delay_us(500);
     output_high(ACT1);
 
-    output_low(ACT2); // horaUnd
-    choose(horaUnd); 
-    delay_ms(1); 
+    output_low(ACT2); 
+    choose(horaUnd);
+    delay_us(500);
     output_high(ACT2);
 
-    output_low(ACT3); // minDez
-    choose(minDez);  
-    delay_ms(1); 
+    output_low(ACT3); 
+    choose(minDez);
+    delay_us(500);
     output_high(ACT3);
 
-    output_low(ACT4); // minUnd
-    choose(minUnd);  
-    delay_ms(1); 
+    output_low(ACT4); 
+    choose(minUnd);
+    delay_us(500);
     output_high(ACT4);
 
-    output_low(ACT5); // segDez
-    choose(segDez);  
-    delay_ms(1); 
+    output_low(ACT5); 
+    choose(segDez);
+    delay_us(500);
     output_high(ACT5);
 
-    output_low(ACT6); //segUnd
-    choose(segUnd);  
-    delay_ms(1); 
+    output_low(ACT6); 
+    choose(segUnd);
+    delay_us(500);
     output_high(ACT6);
+    delay_us(3);
 }
 
 void testes() {
-    clearDisplay();
-    output_low(LEDA); 
-    output_low(LEDB); 
-    output_low(LEDC);
-    output_low(LEDD); 
-    output_low(LEDE); 
-    output_low(LEDF); 
-    output_low(LEDG);
-    delay_ms(500);
-    clearDisplay();
-    delay_ms(500);
+    int16 i;
+
+    for(i = 0; i < 500; i++) {
+        output_low(ACT1); 
+        choose(8); 
+        delay_ms(1); 
+        output_high(ACT1);
+
+        output_low(ACT2); 
+        choose(8); 
+        delay_ms(1); 
+        output_high(ACT2);
+
+        output_low(ACT3); 
+        choose(8); 
+        delay_ms(1); 
+        output_high(ACT3);
+
+        output_low(ACT4); 
+        choose(8); 
+        delay_ms(1); 
+        output_high(ACT4);
+
+        output_low(ACT5); 
+        choose(8); 
+        delay_ms(1); 
+        output_high(ACT5);
+
+        output_low(ACT6); 
+        choose(8); 
+        delay_ms(1); 
+        output_high(ACT6);
+    }
+}
+
+void increment() {
+    segUnd++;
+    if(segUnd == 10) {
+        segUnd = 0;
+        segDez++;
+        if(segDez == 6) {
+            segDez = 0;
+            minUnd++;
+            if(minUnd == 10) {
+                minUnd = 0;
+                minDez++;
+                if(minDez == 6) {
+                    minDez = 0;
+                    horaUnd++;
+                    if(horaUnd == 10) {
+                        horaUnd = 0;
+                        horaDez++;
+                    }
+                    if(horaDez == 2 && horaUnd == 4) {
+                        horaUnd = 0;
+                        horaDez = 0;
+                    }
+                }
+            }
+        }
+    }
 }
 
 void main() {
-    int8  hours   = 0;
-    int8  minutes = 0;
-    int8  seconds = 0;
-    int32 acc     = 0;
+    int iter = 0;
 
     testes();
 
-while(1) {
+    while(1) {
+        output_low(TEST_PIN);
+        displayRefresh();
+        output_high(TEST_PIN);
 
-    output_low(TEST_PIN);
-
-    displayRefresh(hours, minutes, seconds);
-
-    acc += 6645;
-
-    output_high(TEST_PIN);
-
-    if(acc >= 1000000) {
-        acc -= 1000000;
-        seconds++;
-        if(seconds >= 60) {
-            seconds = 0;
-            minutes++;
-            if(minutes >= 60) {
-                minutes = 0;
-                hours++;
-                if(hours >= 24) {
-                    hours = 0;
-                }
-            } else {
-                delay_us(8);
-            }
-        } else {
-            delay_us(15);
+        iter++;
+        if(iter >= 310) {
+            iter = 0;
+            increment();
         }
-    } else {
-        delay_us(22);
     }
-}
 }
