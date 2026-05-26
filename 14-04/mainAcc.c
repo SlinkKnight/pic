@@ -4,13 +4,12 @@
 #use delay(crystal=4MHz)
 #FUSES NOPUT, NOBROWNOUT, NOLVP, HS, NOWDT
 
-#define LEDA     PIN_D4
 #define ACT1     PIN_C7
 #define ACT2     PIN_C6    
 #define ACT3     PIN_C5
 #define ACT4     PIN_C4
-#define ACT5     PIN_D2
-#define ACT6     PIN_D3
+#define ACT5     PIN_D3
+#define ACT6     PIN_D2
 #define TEST_PIN PIN_D0
 
 int8 segs[10] = {
@@ -142,19 +141,20 @@ void increment() {
 }
 
 void main() {
-    int iter = 0;
+    int16 iter = 0;
 
     testes();
 
-    while(1) {
+    while(TRUE) {
         output_low(TEST_PIN);
         displayRefresh();
         output_high(TEST_PIN);
 
         iter++;
+
         if(iter >= 310) {
-            iter = 0;
             increment();
+            iter = 0;
         }
     }
 }
